@@ -523,7 +523,9 @@ namespace Extension
 			{
 				get => NasmParentFolder;
 				set => NasmParentFolder =
-					value.EndsWith("\\") || value.Length == 0 ? value : value + '\\'; // Force the path to end with '\' if not empty.
+					value.EndsWith("\\") || value.EndsWith("/") || value.Length == 0
+						? value
+						: value + '\\'; // Force the path to end with '\' if not empty.
 			}
 
 			[Category("Parent Folders")]
@@ -534,7 +536,7 @@ namespace Extension
 			public string yasmParentFolderValue
 			{
 				get => YasmParentFolder;
-				set => YasmParentFolder = value.EndsWith("\\") || value.Length == 0 ? value : value + '\\';
+				set => YasmParentFolder = value.EndsWith("\\") || value.EndsWith("/") || value.Length == 0 ? value : value + '\\';
 			}
 
 			[Category("Parent Folders")]
@@ -545,7 +547,7 @@ namespace Extension
 			public string gasParentFolderValue
 			{
 				get => GasParentFolder;
-				set => GasParentFolder = value.EndsWith("\\") || value.Length == 0 ? value : value + '\\';
+				set => GasParentFolder = value.EndsWith("\\") || value.EndsWith("/") || value.Length == 0 ? value : value + '\\';
 			}
 
 			[Category("Parent Folders")]
@@ -556,7 +558,7 @@ namespace Extension
 			public string MasmParentFolderValue
 			{
 				get => MasmParentFolder;
-				set => MasmParentFolder = value.EndsWith("\\") || value.Length == 0 ? value : value + '\\';
+				set => MasmParentFolder = value.EndsWith("\\") || value.EndsWith("/") || value.Length == 0 ? value : value + '\\';
 			}
 		}
 	}
