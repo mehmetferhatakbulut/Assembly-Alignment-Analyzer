@@ -1,6 +1,6 @@
 # Assembly Alignment Analyzer
 A Visual Studio extension to automatically suggest explicit nops/long nops for instruction alignment. 
-## Supported Functionalities
+## Currently Supported and Future Functionalities 
 - [x] NASM(Netwide Assembler)
 - [x] YASM(Yet Another Assembler)
 - [x] GAS(GNU Assembler)
