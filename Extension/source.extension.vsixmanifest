@@ -3,7 +3,7 @@
     <Metadata>
         <Identity Id="asm-aa.0c96ef1f-c73d-4de6-83ba-35fe24889584" Version="1.0" Language="en-US" Publisher="eax4" />
         <DisplayName>Assembly Alignment Analyzer</DisplayName>
-        <Description xml:space="preserve">Empty VSIX Project.</Description>
+        <Description xml:space="preserve">Automate the tedious work of finding the right NOP's for instruction alignment.</Description>
         <MoreInfo>https://github.com/eax4/Assembly-Alignment-Analyzer</MoreInfo>
         <License>LICENSE.txt</License>
         <Icon>icon.png</Icon>
