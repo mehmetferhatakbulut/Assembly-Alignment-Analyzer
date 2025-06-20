@@ -135,17 +135,17 @@ namespace Extension
 			switch (AssemblyOptions.assembler)
 			{
 				case AssemblyOptions.Assembler.NetwideAssembler:
-					assemble.StartInfo.FileName = (AssemblyOptions.NasmParentFolder.Length > 0
-						? Path.GetFullPath(AssemblyOptions.NasmParentFolder) // ensure path is not empty to avoid errors.
-						: "") + "nasm.exe";
+					assemble.StartInfo.FileName = AssemblyOptions.NasmPath.Length > 0
+						? Path.GetFullPath(AssemblyOptions.NasmPath) // ensure path is not empty to avoid errors.
+						: "nasm.exe";
 					assemble.StartInfo.Arguments =
 						$"-f bin -l {tempfile}.lst -o {tempfile}.bin {tempfile}.s {AssemblyOptions.AdditionalArguments}";
 					break;
 
 				case AssemblyOptions.Assembler.YASM:
-					assemble.StartInfo.FileName = (AssemblyOptions.YasmParentFolder.Length > 0
-						? Path.GetFullPath(AssemblyOptions.YasmParentFolder)
-						: "") + "yasm.exe";
+					assemble.StartInfo.FileName = AssemblyOptions.YasmPath.Length > 0
+						? Path.GetFullPath(AssemblyOptions.YasmPath)
+						: "yasm.exe";
 					assemble.StartInfo.Arguments =
 						$"-f bin -L nasm -l {tempfile}.lst -o {tempfile}.bin {tempfile}.s {AssemblyOptions.AdditionalArguments}";
 					break;
@@ -153,26 +153,26 @@ namespace Extension
 				case AssemblyOptions.Assembler.GNUAssembler:
 					masmSyntax = 0;
 					gnu = 1;
-					assemble.StartInfo.FileName = (AssemblyOptions.GasParentFolder.Length > 0
-						? Path.GetFullPath(AssemblyOptions.GasParentFolder)
-						: "") + "as.exe";
+					assemble.StartInfo.FileName = AssemblyOptions.GasPath.Length > 0
+						? Path.GetFullPath(AssemblyOptions.GasPath)
+						: "as.exe";
 					assemble.StartInfo.Arguments = $"-al -o {tempfile}.bin {tempfile}.s {AssemblyOptions.AdditionalArguments}";
 					break;
 
 				case AssemblyOptions.Assembler.MacroAssembler:
 					masmSyntax = 1;
-					assemble.StartInfo.FileName = (AssemblyOptions.MasmParentFolder.Length > 0
-						? Path.GetFullPath(AssemblyOptions.MasmParentFolder)
-						: "") + "ml.exe";
+					assemble.StartInfo.FileName = AssemblyOptions.MasmPath.Length > 0
+						? Path.GetFullPath(AssemblyOptions.MasmPath)
+						: "ml.exe";
 					assemble.StartInfo.Arguments =
 						$"{AssemblyOptions.AdditionalArguments} /nologo /Fo\"{tempfile}.bin\" /Fl\"{tempfile}.lst\" /c {tempfile}.s";
 					break;
 
 				case AssemblyOptions.Assembler.MacroAssembler64:
 					masmSyntax = 1;
-					assemble.StartInfo.FileName = (AssemblyOptions.MasmParentFolder.Length > 0
-						? Path.GetFullPath(AssemblyOptions.MasmParentFolder)
-						: "") + "ml64.exe";
+					assemble.StartInfo.FileName = AssemblyOptions.MasmPath.Length > 0
+						? Path.GetFullPath(AssemblyOptions.MasmPath)
+						: "ml64.exe";
 					assemble.StartInfo.Arguments =
 						$"{AssemblyOptions.AdditionalArguments} /nologo /Fo\"{tempfile}.bin\" /Fl\"{tempfile}.lst\" /c {tempfile}.s";
 
@@ -477,10 +477,10 @@ namespace Extension
 			public static string Label = "__ASM_ALIGNER_CHECK_FOR_ALIGNMENT_SUGGEST_NOP__";
 			public static string AdditionalArguments = "";
 			public static Assembler assembler = Assembler.NetwideAssembler;
-			public static string NasmParentFolder = "";
-			public static string YasmParentFolder = "";
-			public static string GasParentFolder = "";
-			public static string MasmParentFolder = "";
+			public static string NasmPath = "";
+			public static string YasmPath = "";
+			public static string GasPath = "";
+			public static string MasmPath = "";
 
 			[Category("Assembly")]
 			[DisplayName("Label")]
@@ -514,51 +514,48 @@ namespace Extension
 				set => AdditionalArguments = value;
 			}
 
-			[Category("Parent Folders")]
-			[DisplayName("NetwideAssembler Parent Folder")]
+			[Category("Paths")]
+			[DisplayName("NetwideAssembler Full Path")]
 			[Description(
-				@"If NASM's parent folder is not in your PATH environment variable, specify it here. Example: C:\Program Files (x86)\NASM\")]
+				@"If NASM's Full Path is not in your PATH environment variable, specify the full path here. Example: C:\Program Files (x86)\NASM\nasm.exe")]
 			[DefaultValue("")]
-			public string nasmParentFolderValue
+			public string nasmPathValue
 			{
-				get => NasmParentFolder;
-				set => NasmParentFolder =
-					value.EndsWith("\\") || value.EndsWith("/") || value.Length == 0
-						? value
-						: value + '\\'; // Force the path to end with '\' if not empty.
+				get => NasmPath;
+				set => NasmPath = File.Exists(value) ? value : "";
 			}
 
-			[Category("Parent Folders")]
-			[DisplayName("YASM Parent Folder")]
+			[Category("Paths")]
+			[DisplayName("YASM Full Path")]
 			[Description(
-				@"If YASM's parent folder is not in your PATH environment variable, specify it here. Example: C:\Program Files (x86)\YASM\")]
+				@"If YASM's parent folder is not in your PATH environment variable, specify the full path here. Example: C:\Program Files (x86)\YASM\yasm.exe")]
 			[DefaultValue("")]
-			public string yasmParentFolderValue
+			public string yasmPathValue
 			{
-				get => YasmParentFolder;
-				set => YasmParentFolder = value.EndsWith("\\") || value.EndsWith("/") || value.Length == 0 ? value : value + '\\';
+				get => YasmPath;
+				set => YasmPath = File.Exists(value) ? value : "";
 			}
 
-			[Category("Parent Folders")]
-			[DisplayName("GNUAssembler Parent Folder")]
+			[Category("Paths")]
+			[DisplayName("GNUAssembler Full Path")]
 			[Description(
-				@"If GAS' parent folder is not in your PATH environment variable, specify it here. Example: C:\w64devkit\bin\")]
+				@"If GAS' parent folder is not in your PATH environment variable, specify the full path here. Example: C:\w64devkit\bin\as.exe")]
 			[DefaultValue("")]
-			public string gasParentFolderValue
+			public string gasPathValue
 			{
-				get => GasParentFolder;
-				set => GasParentFolder = value.EndsWith("\\") || value.EndsWith("/") || value.Length == 0 ? value : value + '\\';
+				get => GasPath;
+				set => GasPath = File.Exists(value) ? value : "";
 			}
 
-			[Category("Parent Folders")]
-			[DisplayName("MacroAssembler Parent Folder")]
+			[Category("Paths")]
+			[DisplayName("MacroAssembler Full Path")]
 			[Description(
-				@"If MASM's parent folder is not in your PATH environment variable, specify it here. Example: C:\w64devkit\bin\")]
+				@"If MASM's parent folder is not in your PATH environment variable, specify the full path here. Example: C:/Program Files/Microsoft Visual Studio/2022/Preview/VC/Tools/MSVC/14.44.35207/bin/HostX64/x64/ml64.exe")]
 			[DefaultValue("")]
-			public string MasmParentFolderValue
+			public string masmPathValue
 			{
-				get => MasmParentFolder;
-				set => MasmParentFolder = value.EndsWith("\\") || value.EndsWith("/") || value.Length == 0 ? value : value + '\\';
+				get => MasmPath;
+				set => MasmPath = File.Exists(value) ? value : "";
 			}
 		}
 	}
