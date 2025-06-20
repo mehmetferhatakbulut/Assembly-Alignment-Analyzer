@@ -4,6 +4,7 @@
         <Identity Id="asm-aa.0c96ef1f-c73d-4de6-83ba-35fe24889584" Version="1.0" Language="en-US" Publisher="bx" />
         <DisplayName>Assembly Alignment Analyzer</DisplayName>
         <Description xml:space="preserve">Empty VSIX Project.</Description>
+        <License>LICENSE.txt</License>
         <Icon>icon.png</Icon>
         <PreviewImage>icon.png</PreviewImage>
         <Preview>true</Preview>
