@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<Extern href="stdidcmd.h" />
+
+	<Extern href="vsshlids.h" />
+
+	<Include href="KnownImageIds.vsct" />
+
+	<Commands package="guidExtensionPackage">
+
+		<Groups>
+			<Group guid="guidExtensionPackageCmdSet" id="MyMenuGroup" priority="0x0600">
+				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_CODEWIN" />
+			</Group>
+		</Groups>
+
+		<Buttons>
+			<Button guid="guidExtensionPackageCmdSet" id="Command1Id" priority="0x0100" type="Button">
+				<Parent guid="guidExtensionPackageCmdSet" id="MyMenuGroup" />
+				<Icon guid="ImageCatalogGuid" id="Analysis" />
+				<CommandFlag>IconIsMoniker</CommandFlag>
+				<Strings>
+					<ButtonText>Check Instruction Alignment</ButtonText>
+				</Strings>
+			</Button>
+		</Buttons>
+	</Commands>
+
+	<KeyBindings>
+	</KeyBindings>
+
+	<Symbols>
+
+		<GuidSymbol name="guidExtensionPackage" value="{85c4ed75-3e80-4378-9884-b3f5ba1416ea}" />
+
+		<GuidSymbol name="guidExtensionPackageCmdSet" value="{bdc1a0e4-6fde-4979-91cb-e2f608d6cdbd}">
+			<IDSymbol name="MyMenuGroup" value="0x1020" />
+			<IDSymbol name="Command1Id" value="0x0100" />
+		</GuidSymbol>
+	</Symbols>
+</CommandTable>
