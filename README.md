@@ -34,6 +34,6 @@ This extension also supports selections, in case there are multiple instructions
 ## Settings
 ### General Settings
 
-![image](https://github.com/user-attachments/assets/3bc2b435-75e4-4d49-a945-b4eb4bde38c6)
+![image](https://github.com/user-attachments/assets/46572061-e084-4fc8-94a1-24862e2f737a)
 
 
