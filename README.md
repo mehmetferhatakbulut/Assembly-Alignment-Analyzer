@@ -1,3 +1,4 @@
+# BETA ! Problems may occur.
 # Assembly Alignment Analyzer
 A Visual Studio extension to automatically suggest explicit nops/long nops for instruction alignment. 
 ## Currently Supported and Future Functionalities 
@@ -11,7 +12,11 @@ A Visual Studio extension to automatically suggest explicit nops/long nops for i
 - [ ] C/C++ regular code alignment
 
 ## Checking Alignment
+Right click / use the Shift + F10 keys to open the context menu. The command is "Check Instruction Alignment".
+![image](https://github.com/user-attachments/assets/11b7b8eb-74e5-475a-98dd-42b54d607ca1)
+The required NOP(s) will be inserted automatically.
+![image](https://github.com/user-attachments/assets/d34a408b-1e5b-4491-8669-040c73f21e4a)
 
-## Suggestions
+## Caveats
 
 ## Settings
