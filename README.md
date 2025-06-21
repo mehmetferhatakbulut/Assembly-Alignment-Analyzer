@@ -37,6 +37,15 @@ This extension also supports selections, in case there are multiple instructions
 ---
 ### Assembly Settings
 
+![image](https://github.com/user-attachments/assets/7c3a7998-ea3e-4ce8-945f-9b62746f532e)
+
+- **Additional Arguments** : Lets you utilize custom arguments for the assemblers.(For example: /Ox)
+- **Assembler** : Supported assemblers to choose from.
+
+  ![image](https://github.com/user-attachments/assets/7375a053-e66a-46d2-b8d5-e85ebe876eab)
+
+- **Label** : Since this extension utilizes a dummy label, it's recommended to change this if any form of label overlap/multiple labels existing with same names happens.
+- **Paths** : Lets the user choose the full paths for assemblers if their parent directories aren't defined inside the PATH environment variable.
 
 ### C/C++ Settings
 
