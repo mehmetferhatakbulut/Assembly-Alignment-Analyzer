@@ -8,7 +8,7 @@
         <License>LICENSE.txt</License>
         <Icon>icon.png</Icon>
         <PreviewImage>icon.png</PreviewImage>
-        <Tags>Assembly, Instructions, Alignment, Tools, Coding, Performance, Optimization, Optimize, Automation</Tags>
+        <Tags>Assembly, Instructions, Alignment, Tools, Coding, Performance, Optimization, Optimize, Automation, x64, x86, masm, nasm, yasm, gas</Tags>
         <Preview>true</Preview>
     </Metadata>
     <Installation>

@@ -410,7 +410,7 @@ namespace Extension
 		{
 			public static int assumedAlignment;
 			public static int desiredAlignmentBoundary = 16;
-			public static bool MasmStyle = true;
+			public static bool MasmStyle;
 			public static int maximumNopSize = 9;
 
 			[Category("General")]
@@ -443,8 +443,8 @@ namespace Extension
 			[Category("General")]
 			[DisplayName("Masm Style Syntax")]
 			[Description(
-				"True by default. If true, the padding will use 'h' as a postfix; if false, the padding will use '0x' as a prefix for the bytes. (Ignored for MASM and GAS)")]
-			[DefaultValue(true)]
+				"False by default. If true, the padding will use 'h' as a postfix; if false, the padding will use '0x' as a prefix for the bytes. (Ignored for MASM and GAS)")]
+			[DefaultValue(false)]
 			public bool masmStyleValue
 			{
 				get => MasmStyle;
