@@ -32,3 +32,8 @@ This extension also supports selections, in case there are multiple instructions
 - Only checks a single ASM/C/C++ file, not the entire project(since distinct functions at distinct files are usually aligned on their own, but still, an assumed alignment setting is provided for this.)
 
 ## Settings
+### General Settings
+
+![image](https://github.com/user-attachments/assets/3bc2b435-75e4-4d49-a945-b4eb4bde38c6)
+
+
