@@ -28,5 +28,7 @@ This extension also supports selections, in case there are multiple instructions
 - Make sure to check the alignments from top to bottom. If an alignment for the latter sections of code was done before for the former sections, the alignment suggestion for the sections after the new alignment suggestion will be invalid.
 - GAS and MASM ignore the MASM-style definitions setting as they are incompatible with eachother.
 - The full path needs to be valid, otherwise it will be deleted. Supports both '\' and '/' as delimiters.
+- The temporary folder resides at %TEMP%/ASMALIGN. It's not deleted by the extension because it doesn't take up much space.
+- Only checks a single ASM/C/C++ file, not the entire project(since distinct functions at distinct files are usually aligned on their own, but still, an assumed alignment setting is provided for this.)
 
 ## Settings
