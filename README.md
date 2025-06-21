@@ -36,7 +36,7 @@ This extension also supports selections, in case there are multiple instructions
 
   
 ## Caveats / Important Notes
-- Make sure to check the alignments ==from top to bottom==. If an alignment for the latter sections of code was done before for the former sections, the alignment suggestion for the sections after the new alignment suggestion will be **invalid**.
+- Make sure to check the alignments **from top to bottom**. If an alignment for the latter sections of code was done before for the former sections, the alignment suggestion for the sections after the new alignment suggestion will be **invalid**.
 - **GAS** and **MASM** ignore the MASM-style definitions setting as they are incompatible with eachother.
 - The full path needs to be valid, otherwise it will be deleted. Supports both '\' and '/' as delimiters.
 - The temporary folder resides at %TEMP%/ASMALIGN. It's not deleted by the extension because it doesn't take up much space.
