@@ -25,7 +25,7 @@ This extension also supports selections, in case there are multiple instructions
 ![image](https://github.com/user-attachments/assets/7b29cfc8-1542-48b3-aa92-04253e0af9bf)
 
 ## Caveats / Important Notes
-- Make sure to check the alignments from top to bottom. If an alignment for the latter sections of code was done before for the former sections, the alignment suggestion for the sections after the new alignment for the top will be invalid.
+- Make sure to check the alignments from top to bottom. If an alignment for the latter sections of code was done before for the former sections, the alignment suggestion for the sections after the new alignment suggestion will be invalid.
 - GAS and MASM ignore the MASM-style definitions setting as they are incompatible with eachother.
 - The full path needs to be valid, otherwise it will be deleted. Supports both '\' and '/' as delimiters.
 
