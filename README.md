@@ -34,6 +34,13 @@ This extension also supports selections, in case there are multiple instructions
 - **Masm Style Syntax** : If true, will force the extension to utilize 'h' as a postfix. If false, will force the extension to utilize "0x" as a prefix. Example: db 0x90 / db 90h
 - **Maximum NOP Size** : Despite the recommendation by Intel, this option can range between 0-15. Lets you choose the maximum NOP size if the alignment is over the selected value.
 
+---
+### Assembly Settings
+
+
+### C/C++ Settings
+
+Not yet supported.
   
 ## Caveats / Important Notes
 - Make sure to check the alignments **from top to bottom**. If an alignment for the latter sections of code was done before for the former sections or new instructions were inserted before an alignment, the alignment suggestion for the sections after the new alignment suggestion will be **invalid**.
