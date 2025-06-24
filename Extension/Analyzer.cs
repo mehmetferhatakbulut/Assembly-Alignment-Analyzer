@@ -121,9 +121,10 @@ namespace Extension
 			if (!Directory.Exists(tempLocation))
 				Directory.CreateDirectory(tempLocation);
 
-			// Get options to avoid using default values if the user hasn't changed them right before running the extension. But were changed a while ago.
+			// Get options in the initialization, dialog pages that didn't load will just return default values.
 			package.GetDialogPage(typeof(GeneralOptions));
 			package.GetDialogPage(typeof(AssemblyOptions));
+			//package.GetDialogPage(typeof(CCPPOptions));
 
 			var commandService =
 				await package.GetServiceAsync(typeof(IMenuCommandService)) as OleMenuCommandService;
@@ -170,7 +171,7 @@ namespace Extension
 
 				case AssemblyOptions.Assembler.MacroAssembler64:
 					masmSyntax = 1;
-					assemble.StartInfo.FileName = AssemblyOptions.MasmPath.Length > 0
+					assemble.StartInfo.FileName = AssemblyOptions.Masm64Path.Length > 0
 						? Path.GetFullPath(AssemblyOptions.MasmPath)
 						: "ml64.exe";
 					assemble.StartInfo.Arguments =
@@ -331,7 +332,7 @@ namespace Extension
 				return;
 			}
 
-			if (!activeDocument.Name.EndsWith(".s") && !activeDocument.Name.EndsWith(".asm"))
+			if (!activeDocument.Name.ToLower().EndsWith(".s") && !activeDocument.Name.ToLower().EndsWith(".asm"))
 			{
 				DTEInstance.StatusBar.Text = "Invalid File Extension. This extension supports C/C++/ASM only.";
 				return;
@@ -481,6 +482,7 @@ namespace Extension
 			public static string YasmPath = "";
 			public static string GasPath = "";
 			public static string MasmPath = "";
+			public static string Masm64Path = "";
 
 			[Category("Assembly")]
 			[DisplayName("Label")]
@@ -550,12 +552,23 @@ namespace Extension
 			[Category("Paths")]
 			[DisplayName("MacroAssembler Full Path")]
 			[Description(
-				@"If MASM's parent folder is not in your PATH environment variable, specify the full path here. Example: C:/Program Files/Microsoft Visual Studio/2022/Preview/VC/Tools/MSVC/14.44.35207/bin/HostX64/x64/ml64.exe")]
+				@"If MASM's parent folder is not in your PATH environment variable, specify the full path here. Example: C:/Program Files/Microsoft Visual Studio/2022/Preview/VC/Tools/MSVC/14.44.35207/bin/HostX64/x64/ml.exe")]
 			[DefaultValue("")]
 			public string masmPathValue
 			{
 				get => MasmPath;
 				set => MasmPath = File.Exists(value) ? value : "";
+			}
+
+			[Category("Paths")]
+			[DisplayName("MacroAssembler64 Full Path")]
+			[Description(
+				@"If MASM64's parent folder is not in your PATH environment variable, specify the full path here. Example: C:/Program Files/Microsoft Visual Studio/2022/Preview/VC/Tools/MSVC/14.44.35207/bin/HostX64/x64/ml64.exe")]
+			[DefaultValue("")]
+			public string masm64PathValue
+			{
+				get => Masm64Path;
+				set => Masm64Path = File.Exists(value) ? value : "";
 			}
 		}
 	}
