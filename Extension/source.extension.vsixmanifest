@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="asm-aa.0c96ef1f-c73d-4de6-83ba-35fe24889584" Version="1.0" Language="en-US" Publisher="eax4" />
+        <Identity Id="asm-aa.0c96ef1f-c73d-4de6-83ba-35fe24889584" Version="1.1" Language="en-US" Publisher="eax4" />
         <DisplayName>Assembly Alignment Analyzer</DisplayName>
-        <Description xml:space="preserve">Automate the tedious work of finding the right NOP's for instruction alignment.</Description>
+        <Description xml:space="preserve">Automate the tedious work of finding the right NOP(s) for instruction alignment.</Description>
         <MoreInfo>https://github.com/eax4/Assembly-Alignment-Analyzer</MoreInfo>
         <License>LICENSE.txt</License>
         <Icon>icon.png</Icon>
         <PreviewImage>icon.png</PreviewImage>
-        <Tags>Assembly, Instructions, Alignment, Tools, Coding, Performance, Optimization, Optimize, Automation, x64, x86, masm, nasm, yasm, gas</Tags>
+        <Tags>Assembly, Instructions, Alignment, Tools, Coding, Performance, Optimization, Optimize, Automation, x64, x86, masm, nasm, yasm, gas, asm, Security</Tags>
         <Preview>true</Preview>
     </Metadata>
     <Installation>

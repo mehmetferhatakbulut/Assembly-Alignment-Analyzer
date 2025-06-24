@@ -552,7 +552,7 @@ namespace Extension
 			[Category("Paths")]
 			[DisplayName("MacroAssembler Full Path")]
 			[Description(
-				@"If MASM's parent folder is not in your PATH environment variable, specify the full path here. Example: C:/Program Files/Microsoft Visual Studio/2022/Preview/VC/Tools/MSVC/14.44.35207/bin/HostX64/x64/ml.exe")]
+				@"If MASM's parent folder is not in your PATH environment variable, specify the full path here. Example: C:/Program Files/Microsoft Visual Studio/2022/Preview/VC/Tools/MSVC/14.44.35207/bin/HostX86/x86/ml.exe")]
 			[DefaultValue("")]
 			public string masmPathValue
 			{
