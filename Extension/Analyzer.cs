@@ -426,7 +426,8 @@ namespace Extension
 
 			[Category("General")]
 			[DisplayName("Desired Alignment Boundary")]
-			[Description("16 by default. Has to be a power of 2. Sets the desired alignment boundary.")]
+			[Description(
+				"16 by default. Has to be a power of 2. Sets the desired alignment boundary. Can be set from 2, up to 2^30")]
 			[DefaultValue(16)]
 			public int desiredAlignmentBoundaryValue
 			{
@@ -434,7 +435,8 @@ namespace Extension
 				set
 				{
 					var logarithm = Math.Abs(Math.Log(value, 2));
-					desiredAlignmentBoundary = 1 << (int)Math.Round(logarithm); // Get nearest power of 2, in case input is wrong.
+					desiredAlignmentBoundary =
+						Math.Max(2, 1 << (int)Math.Round(logarithm)); // Get nearest power of 2, in case input is wrong.
 
 					// modulo the old assumed alignment with the new desired alignment boundary. Given the fact the set method basically takes the modulo of assumed alignment.
 					assumedalignmentValue = assumedalignmentValue;
@@ -455,12 +457,12 @@ namespace Extension
 			[Category("General")]
 			[DisplayName("Maximum NOP Size")]
 			[Description(
-				"9 by default due to encouragement of Intel's documentations. Sets the maximum NOP size/bytes if alignment is over the set value. (0-15)")]
+				"9 by default due to encouragement of Intel's documentations. Sets the maximum NOP size/bytes if alignment is over the set value. (1-15)")]
 			[DefaultValue(9)]
 			public int maximumNopSizeValue
 			{
 				get => maximumNopSize;
-				set => maximumNopSize = value & 15;
+				set => maximumNopSize = Math.Max(1, value & 15);
 			}
 		}
 
