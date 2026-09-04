@@ -1,3 +1,4 @@
+# I am locked out of my old account eax4 as I swapped devices without turning off 2FA. I migrated to this account.
 https://marketplace.visualstudio.com/items?itemName=ax60.assemblyalignmentanalyzer00001
 # This extension is in early release and hasn't been thoroughly tested, errors may occur.
 # Assembly Alignment Analyzer
